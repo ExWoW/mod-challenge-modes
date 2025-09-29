@@ -15,7 +15,7 @@ INSERT INTO `gameobject` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, 
 (5530544, 254605, 609, 0, 0, 1, 1, 2415.84, -5649.91, 376.819, 1.87356, -0, -0, -0.805655, -0.592385, 300, 0, 1, '', 0);
 
 -- Remove Undying and Immortal from title rewards for corresponding achievements, so they can only be earned via Hardcore mode. TODO: Add Client DBC edits for these achievements.
-DELETE FROM `achievement_reward` WHERE ID IN (2186, 2187)
+DELETE FROM `achievement_reward` WHERE ID IN (2186, 2187);
 INSERT INTO `achievement_reward` (ID, TitleA, TitleH, ItemID, Sender, Subject, Body, MailTemplateID) VALUES
 (2186, 0, 0, 0, 0, '', '', 0), -- Immortal
 (2187, 0, 0, 0, 0, '', '', 0); -- Undying
