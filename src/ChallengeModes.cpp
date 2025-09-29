@@ -409,12 +409,8 @@ public:
 
     void OnPlayerLogin(Player* player) override
     {
-        if (!sChallengeModes->challengeEnabledForPlayer(SETTING_HARDCORE, player) || !sChallengeModes->challengeEnabledForPlayer(HARDCORE_DEAD, player))
-        {
-            return;
-        }
-        player->KillPlayer();
-        player->GetSession()->KickPlayer("Hardcore character died");
+        // No longer needed - permadeath logic removed
+        // Players who died will have hardcore mode disabled already
     }
 
     void OnPlayerReleasedGhost(Player* player) override
@@ -423,8 +419,10 @@ public:
         {
             return;
         }
+        // Disable hardcore mode and mark as died
+        player->UpdatePlayerSetting("mod-challenge-modes", SETTING_HARDCORE, 0);
         player->UpdatePlayerSetting("mod-challenge-modes", HARDCORE_DEAD, 1);
-        player->GetSession()->KickPlayer("Hardcore character died");
+        ChatHandler(player->GetSession()).PSendSysMessage("|cffFF0000Hardcore mode disabled due to death. You cannot re-enable this challenge.|r");
     }
 
     void OnPlayerPVPKill(Player* /*killer*/, Player* killed) override
@@ -433,7 +431,10 @@ public:
         {
             return;
         }
+        // Disable hardcore mode and mark as died
+        killed->UpdatePlayerSetting("mod-challenge-modes", SETTING_HARDCORE, 0);
         killed->UpdatePlayerSetting("mod-challenge-modes", HARDCORE_DEAD, 1);
+        ChatHandler(killed->GetSession()).PSendSysMessage("|cffFF0000Hardcore mode disabled due to death. You cannot re-enable this challenge.|r");
     }
 
     void OnPlayerKilledByCreature(Creature* /*killer*/, Player* killed) override
@@ -442,7 +443,10 @@ public:
         {
             return;
         }
+        // Disable hardcore mode and mark as died
+        killed->UpdatePlayerSetting("mod-challenge-modes", SETTING_HARDCORE, 0);
         killed->UpdatePlayerSetting("mod-challenge-modes", HARDCORE_DEAD, 1);
+        ChatHandler(killed->GetSession()).PSendSysMessage("|cffFF0000Hardcore mode disabled due to death. You cannot re-enable this challenge.|r");
     }
 
     void OnPlayerResurrect(Player* player, float /*restore_percent*/, bool /*applySickness*/) override
@@ -452,9 +456,9 @@ public:
             return;
         }
         // A better implementation is to not allow the resurrect but this will need a new hook added first
-        player->UpdatePlayerSetting("mod-challenge-modes", HARDCORE_DEAD, 1);
-        player->KillPlayer();
-        player->GetSession()->KickPlayer("Hardcore character died");
+        // player->UpdatePlayerSetting("mod-challenge-modes", HARDCORE_DEAD, 1);
+        // player->KillPlayer();
+        // player->GetSession()->KickPlayer("Hardcore character died");
     }
 
     void OnPlayerGiveXP(Player* player, uint32& amount, Unit* victim, uint8 xpSource) override
@@ -645,7 +649,7 @@ public:
             return;
         }
         // A better implementation is to not allow the resurrect but this will need a new hook added first
-        player->KillPlayer();
+        // player->KillPlayer();
     }
 
     void OnPlayerGiveXP(Player* player, uint32& amount, Unit* victim, uint8 xpSource) override
@@ -807,7 +811,7 @@ public:
 
     bool OnGossipHello(Player* player, GameObject* go) override
     {
-        if (sChallengeModes->challengeEnabled(SETTING_HARDCORE) && !playerSettingEnabled(player, SETTING_HARDCORE) && !playerSettingEnabled(player, SETTING_SEMI_HARDCORE))
+        if (sChallengeModes->challengeEnabled(SETTING_HARDCORE) && !playerSettingEnabled(player, SETTING_HARDCORE) && !playerSettingEnabled(player, SETTING_SEMI_HARDCORE) && !playerSettingEnabled(player, HARDCORE_DEAD))
         {
             AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Enable Hardcore Mode", 0, SETTING_HARDCORE);
         }
