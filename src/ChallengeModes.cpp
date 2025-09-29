@@ -801,7 +801,7 @@ public:
 
         bool CanBeSeen(Player const* player) override
         {
-            if ((player->GetLevel() > 1 && player->getClass() != CLASS_DEATH_KNIGHT) || (player->GetLevel() > 55))
+            if (player->GetLevel() > 1 || player->getClass() == CLASS_DEATH_KNIGHT)
             {
                 return false;
             }
