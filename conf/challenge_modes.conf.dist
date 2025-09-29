@@ -60,15 +60,15 @@ ChallengeModes.Enable = 1
 #
 
 Hardcore.Enable = 1
-Hardcore.TitleRewards = ""
+Hardcore.TitleRewards = "60 142, 70 141" # 142 = Undying, 141 = Immortal
 Hardcore.XPMultiplier = 1
 Hardcore.TalentRewards = ""
-Hardcore.ItemRewards = ""
+Hardcore.ItemRewards = "80 33225" # 33225 = Reins of the Swift Spectral Tiger
 Hardcore.ItemRewardAmount = 1
-Hardcore.DisableLevel = 0
+Hardcore.DisableLevel = 80
 Hardcore.AchievementReward = ""
 
-SemiHardcore.Enable = 1
+SemiHardcore.Enable = 0
 SemiHardcore.TitleRewards = ""
 SemiHardcore.XPMultiplier = 1
 SemiHardcore.TalentRewards = ""
@@ -77,7 +77,7 @@ SemiHardcore.ItemRewardAmount = 1
 SemiHardcore.DisableLevel = 0
 SemiHardcore.AchievementReward = ""
 
-SelfCrafted.Enable = 1
+SelfCrafted.Enable = 0
 SelfCrafted.TitleRewards = ""
 SelfCrafted.XPMultiplier = 1
 SelfCrafted.TalentRewards = ""
@@ -86,7 +86,7 @@ SelfCrafted.ItemRewardAmount = 1
 SelfCrafted.DisableLevel = 0
 SelfCrafted.AchievementReward = ""
 
-ItemQualityLevel.Enable = 1
+ItemQualityLevel.Enable = 0
 ItemQualityLevel.TitleRewards = ""
 ItemQualityLevel.XPMultiplier = 1
 ItemQualityLevel.TalentRewards = ""
@@ -95,7 +95,7 @@ ItemQualityLevel.ItemRewardAmount = 1
 ItemQualityLevel.DisableLevel = 0
 ItemQualityLevel.AchievementReward = ""
 
-SlowXpGain.Enable = 1
+SlowXpGain.Enable = 0
 SlowXpGain.TitleRewards = ""
 SlowXpGain.TalentRewards = ""
 SlowXpGain.ItemRewards = ""
@@ -104,7 +104,7 @@ SlowXpGain.DisableLevel = 0
 SlowXpGain.XPMultiplier = 0.50
 SlowXpGain.AchievementReward = ""
 
-VerySlowXpGain.Enable = 1
+VerySlowXpGain.Enable = 0
 VerySlowXpGain.TitleRewards = ""
 VerySlowXpGain.TalentRewards = ""
 VerySlowXpGain.ItemRewards = ""
@@ -113,7 +113,7 @@ VerySlowXpGain.DisableLevel = 0
 VerySlowXpGain.XPMultiplier = 0.25
 VerySlowXpGain.AchievementReward = ""
 
-QuestXpOnly.Enable = 1
+QuestXpOnly.Enable = 0
 QuestXpOnly.TitleRewards = ""
 QuestXpOnly.XPMultiplier = 1
 QuestXpOnly.TalentRewards = ""
@@ -122,7 +122,7 @@ QuestXpOnly.ItemRewardAmount = 1
 QuestXpOnly.DisableLevel = 0
 QuestXpOnly.AchievementReward = ""
 
-IronMan.Enable = 1
+IronMan.Enable = 0
 IronMan.TitleRewards = ""
 IronMan.TalentRewards = ""
 IronMan.ItemRewards = ""
